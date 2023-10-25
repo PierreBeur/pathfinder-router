@@ -43,8 +43,9 @@ struct Problem {
     }
 };
 
-// example problems
-namespace ex {
+int main() {
+    // example problems
+
     vector<pair<int, int>> signals = {
     /*S1->D1*/  {0, 6},
     /*S2->D2*/  {1, 7},
@@ -78,8 +79,6 @@ namespace ex {
     /*D3*/  {},
     };
     Problem prob2(signals, second_order_partial_paths);
-}
 
-int main() {
     return 0;
 }
