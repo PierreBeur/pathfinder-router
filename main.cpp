@@ -10,14 +10,14 @@ weighted directed graphs are given as adjacency lists (G = (V, E))
 */
 namespace ex {
     struct Prob {
-        int node_count;
         vector<pair<int, int>> signals;
         vector<vector<pair<int, double>>> adj_list;
 
-        Prob(vector<pair<int, int>> s, vector<vector<pair<int, double>>> al) {
-            signals = s;
-            adj_list = al;
-            node_count = al.size();
+        Prob(vector<pair<int, int>> s, vector<vector<pair<int, double>>> al)
+            : signals(s), adj_list(al) {}
+        
+        size_t size() {
+            return adj_list.size();
         }
     };
 
