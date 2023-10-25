@@ -4,44 +4,44 @@
 
 using namespace std;
 
-    struct Prob {
-        // signals to be routed given as pairs of source and sink nodes (s_i, t_ij)
-        vector<pair<int, int>> signals;
-        // intrinsic delay of each node, assumed to be the same for all nodes (d_n)
-        double node_delay = 1.0;
-        // directed graph given as an adjacency list (G = (V, E))
-        vector<vector<int>> adj_list;
+struct Prob {
+    // signals to be routed given as pairs of source and sink nodes (s_i, t_ij)
+    vector<pair<int, int>> signals;
+    // intrinsic delay of each node, assumed to be the same for all nodes (d_n)
+    double node_delay = 1.0;
+    // directed graph given as an adjacency list (G = (V, E))
+    vector<vector<int>> adj_list;
 
-        Prob(vector<pair<int, int>> s, vector<vector<pair<int, int>>> pp) : signals(s) {
-            // add definite nodes
-            adj_list.resize(pp.size());
-            // construct full adjacency list from partial paths
-            // loop over all starting nodes
-            for (int start = 0; start < pp.size(); start++) {
-                // loop over all partial paths from starting node
-                for (int partial_path = 0; partial_path < pp[start].size(); partial_path++) {
-                    int dest = pp[start][partial_path].first;
-                    int length = pp[start][partial_path].second;
-                    // construct full path
-                    vector<int> full_path;
-                    for (int i = 0; i < length - 1; i++) {
-                        int n = adj_list.size() + i;
-                        full_path.push_back(n);
-                    }
-                    full_path.push_back(dest);
-                    // add full path to adjacency list
-                    adj_list[start].push_back(full_path[0]);
-                    for (int i = 0; i < length - 1; i++) {
-                        adj_list.push_back({full_path[i + 1]});
-                    }
+    Prob(vector<pair<int, int>> s, vector<vector<pair<int, int>>> pp) : signals(s) {
+        // add definite nodes
+        adj_list.resize(pp.size());
+        // construct full adjacency list from partial paths
+        // loop over all starting nodes
+        for (int start = 0; start < pp.size(); start++) {
+            // loop over all partial paths from starting node
+            for (int partial_path = 0; partial_path < pp[start].size(); partial_path++) {
+                int dest = pp[start][partial_path].first;
+                int length = pp[start][partial_path].second;
+                // construct full path
+                vector<int> full_path;
+                for (int i = 0; i < length - 1; i++) {
+                    int n = adj_list.size() + i;
+                    full_path.push_back(n);
+                }
+                full_path.push_back(dest);
+                // add full path to adjacency list
+                adj_list[start].push_back(full_path[0]);
+                for (int i = 0; i < length - 1; i++) {
+                    adj_list.push_back({full_path[i + 1]});
                 }
             }
         }
-        
-        size_t size() {
-            return adj_list.size();
-        }
-    };
+    }
+    
+    size_t size() {
+        return adj_list.size();
+    }
+};
 
 // example problems
 namespace ex {
