@@ -38,7 +38,7 @@ struct Problem {
         }
     }
     
-    size_t size() {
+    size_t size() const {
         return adj_list.size();
     }
 };
