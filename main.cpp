@@ -4,7 +4,7 @@
 
 using namespace std;
 
-struct Prob {
+struct Problem {
     // signals to be routed given as pairs of source and sink nodes (s_i, t_ij)
     vector<pair<int, int>> signals;
     // intrinsic delay of each node, assumed to be the same for all nodes (d_n)
@@ -12,7 +12,7 @@ struct Prob {
     // directed graph given as an adjacency list (G = (V, E))
     vector<vector<int>> adj_list;
 
-    Prob(vector<pair<int, int>> s, vector<vector<pair<int, int>>> pp) : signals(s) {
+    Problem(vector<pair<int, int>> s, vector<vector<pair<int, int>>> pp) : signals(s) {
         // add definite nodes
         adj_list.resize(pp.size());
         // construct full adjacency list from partial paths
@@ -63,7 +63,7 @@ namespace ex {
     /*D2*/  {},
     /*D3*/  {},
     };
-    Prob prob1(signals, first_order_partial_paths);
+    Problem prob1(signals, first_order_partial_paths);
 
     // second order congestion
     vector<vector<pair<int, int>>> second_order_partial_paths = {
@@ -77,7 +77,7 @@ namespace ex {
     /*D2*/  {},
     /*D3*/  {},
     };
-    Prob prob2(signals, second_order_partial_paths);
+    Problem prob2(signals, second_order_partial_paths);
 }
 
 int main() {
