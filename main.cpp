@@ -4,8 +4,6 @@
 
 using namespace std;
 
-// example problems
-namespace ex {
     struct Prob {
         // signals to be routed given as pairs of source and sink nodes (s_i, t_ij)
         vector<pair<int, int>> signals;
@@ -45,6 +43,8 @@ namespace ex {
         }
     };
 
+// example problems
+namespace ex {
     vector<pair<int, int>> signals = {
     /*S1->D1*/  {0, 6},
     /*S2->D2*/  {1, 7},
