@@ -2,7 +2,7 @@
 
 **Citation:**
 
-> McMurchie, L., & Ebeling, C. (1995). *PathFinder: A Negotiation-Based Performance-Driven Router for FPGAs.* Proceedings of the 1995 ACM Third International Symposium on Field-Programmable Gate Arrays. (111–117). Association for Computing Machinery. [Link to the paper](https://dl.acm.org/doi/10.1145/201310.201328)
+> McMurchie, L., & Ebeling, C. (1995). *PathFinder: A Negotiation-Based Performance-Driven Router for FPGAs.* Proceedings of the 1995 ACM Third International Symposium on Field-Programmable Gate Arrays. (111–117). Association for Computing Machinery. [Link to the paper](https://dl.acm.org/doi/10.1145/201310.201328) and [PDF](https://dl.acm.org/doi/pdf/10.1145/201310.201328)
 
 From the paper:
 
