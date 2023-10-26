@@ -13,3 +13,50 @@ From the paper:
 This C++ program is my attempt at implementing the routing algorithm described in the PathFinder paper. The program currently includes a basic implementation of the Negotiated Congestion algorithm, and only routes signals with exactly one sink. I have been unable to get the algorithm to iteratively converge on a solution; instead, it is stuck flipping between several invalid solutions. The paper does not go into detail on how specific congestion penalties such as $p_n$ (related to the number of other signals presently using a routing resource $n$) are adjusted by the global router. Gradually increasing congestion penalties appropriately is crucial to the ability of the program to converge on a solution.
 
 The program includes example problems from figures 1 and 2 in the paper. The arcs in the figures represent partial paths, weighted with their associated costs. The program takes weighted directed graphs in this form and transforms them into unweighted directed graphs by expanding each arc into a sequence of nodes with equivalent cost.
+
+## Build and Usage
+Modify `main.cpp` to select example problem.
+```
+g++ main.cpp
+./a.out
+```
+## Example Output
+Program run using example problem 1.
+```
+Problem adjacency list: 
+25
+2 9 4
+3 10 4 12
+2 4 15
+2 17 18
+3 6 7 8
+2 20 23
+0
+0
+0
+1 3
+1 11
+1 3
+1 13
+1 14
+1 5
+1 16
+1 5
+1 6
+1 19
+1 7
+1 21
+1 22
+1 7
+1 24
+1 8
+Routing tree for signal 0:
+0 4 6
+Routing tree for signal 1:
+1 4 7
+Routing tree for signal 2:
+2 4 8
+```
+This output shows routing failure, with all three signals using node 4 (node B from figure 1 in the paper). The problem adjacency list can be input to the unweighted directed graphing tool at [visualgo.net/en/graphds](https://visualgo.net/en/graphds) to visualize the node graph, as seen below:
+
+Nodes 0, 1, and 2 are the respective sources, nodes 3, 4, and 5 are nodes A, B, and C, respectively, and nodes 6, 7, and 8 are the respective sinks.
