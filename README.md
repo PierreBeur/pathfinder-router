@@ -58,5 +58,6 @@ Routing tree for signal 2:
 2 4 8
 ```
 This output shows routing failure, with all three signals using node 4 (node B from figure 1 in the paper). The problem adjacency list can be input to the unweighted directed graphing tool at [visualgo.net/en/graphds](https://visualgo.net/en/graphds) to visualize the node graph, as seen below:
+![graph](https://github.com/PierreBeur/pathfinder-router/assets/97627312/3084d165-6b2f-43b0-be7f-c640d38af43b)
 
 Nodes 0, 1, and 2 are the respective sources, nodes 3, 4, and 5 are nodes A, B, and C, respectively, and nodes 6, 7, and 8 are the respective sinks.
