@@ -82,12 +82,26 @@ vector<vector<int>> negotiated_congestion_router(const Problem& p) {
         // update c_n for all nodes
         update_node_costs(node_costs, node_base_costs, node_congestion_history_costs, node_signal_uses);
 
+        // for (int n = 0; n < p.size(); n++) {
+        //     cout << n << ": " << node_costs[n] << endl;
+        // }
+
+        // reset node signal uses
+        // for (int& su : node_signal_uses) {
+        //     su = 1;
+        // }
+
         // loop over all signals i (signal router)
         for (int i = 0; i < p.signals.size(); i++) {
             pair<int, int> signal = p.signals[i];
             // rip up routing tree RT_i
+            // for (int n : routing_trees[i]) {
+            //     node_signal_uses[n]--;
+            // }
             routing_trees[i].clear();
             routing_trees[i].push_back(signal.first); // add source node s_i to routing tree
+            // node_signal_uses[signal.first]++;
+            // update_node_costs(node_costs, node_base_costs, node_congestion_history_costs, node_signal_uses);
 
             // loop until all sinks t_ij have been found
             bool all_sinks_found = false;
@@ -138,8 +152,18 @@ vector<vector<int>> negotiated_congestion_router(const Problem& p) {
                 while (!reverse_path.empty()) {
                     // add n to RT_i
                     routing_trees[i].push_back(reverse_path.back());
+                    // update c_n
+                    // node_signal_uses[reverse_path.back()]++;
+                    // node_congestion_history_costs[reverse_path.back()] += 0.0;
                     reverse_path.pop_back();
                 }
+                // update_node_costs(node_costs, node_base_costs, node_congestion_history_costs, node_signal_uses);
+                
+                // cout << "Routing tree for signal " << i << ": \n";
+                // for (int n : routing_trees[i]) {
+                //     cout << n << ": " << node_costs[n] << '\n';
+                // }
+                // cout << endl;
             }
         }
 
@@ -152,6 +176,9 @@ vector<vector<int>> negotiated_congestion_router(const Problem& p) {
                 node_signal_uses[node] += 1.0;
                 node_congestion_history_costs[node] += 0.0;
             }
+            // for (int n = 0; n < rt.size(); n++) {
+
+            // }
         }
         for (double& su : node_signal_uses) {
             su = max(1.0, su);
